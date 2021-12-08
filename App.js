@@ -1,87 +1,76 @@
-import { blockStatement } from '@babel/types';
+// Example of Splash, Login and Sign Up in React Native
+// https://aboutreact.com/react-native-login-and-signup/
+import 'react-native-gesture-handler';
+
+// Import React and Component
 import React from 'react';
-import { Alert, Dimensions, Image, ImageBackground, StyleSheet, Text, View } from 'react-native';
-import { Button, Input } from 'react-native-elements';
-//import { Input } from 'react-native-elements/dist/input/Input';
-import styles from './styles';
 
-const SCREEN_WIDTH = Dimensions.get('window').width;
-const SCREEN_HEIGHT = Dimensions.get('window').height;
-const BG_IMAGE = require('./img/bg.jpeg');
-const LUCKE_LOGO = require('./img/cropped-logo-lucke-white.png');
+// Import Navigators from React Navigation
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
 
-const StewardMobileApp = () => {
+// Import Screens
+import SplashScreen from './src/screens/login/SplashScreen';
+import LoginScreen from './src/screens/login/LoginScreen';
+import LoginConfigScreen from './src/screens/login/LoginConfigScreen';
+import DrawerNavigationRoutes from './src/screens/DrawerNavigationRoutes';
 
+const Stack = createStackNavigator();
+
+const Auth = () => {
+	// Stack Navigator for Login and Sign up Screen
 	return (
-		<View style={styles.container} >
-			<ImageBackground source={BG_IMAGE} style={styles.bgImage}>
-					<View style={StyleSheet.logoContainer}>
-						<Image source={LUCKE_LOGO} style={styles.luckeLogo} />
-					</View>
-					<View style={styles.titleContainer}> 
-						<View>
-							<Text style={styles.titleText}>Steward Mobile</Text> 
-						</View>
-					</View>
-					<View style={styles.formContainer} >
-						<Input 
-							//value={username}
-							autoFocus={true}
-							autoCapitalize="none"
-							autoCorrect={false}
-							keyboardType="email-address"
-							returnKeyType="next"
-							inputStyle={{ marginLeft: 10, color: 'grey' }}
-							placeholder={'Benutzername'}
-							containerStyle={{
-							  borderBottomColor: 'rgba(0, 0, 0, 0.38)',
-							}}
-							//ref={emailInput}
-							//onSubmitEditing={() => passwordInput.current.focus()}
-							//onChangeText={(text) => setEmail(text)}
-							//errorMessage={
-							  //isEmailValid ? '' : 'Please enter a valid email address'
-							//}
-			  			/>
-						<Input 
-							//value={username}
-							autoFocus={false}
-							autoCapitalize="none"
-							autoCorrect={false}
-							keyboardType="email-address"
-							returnKeyType="next"
-							inputStyle={{ marginLeft: 10, color: 'grey' }}
-							placeholder={'Passwort'}
-							containerStyle={{
-							  borderBottomColor: 'rgba(0, 0, 0, 0.38)',
-							}}
-							//ref={emailInput}
-							//onSubmitEditing={() => passwordInput.current.focus()}
-							//onChangeText={(text) => setEmail(text)}
-							//errorMessage={
-							  //isEmailValid ? '' : 'Please enter a valid email address'
-							//}
-			  			/>
-           				<Button
-              				buttonStyle={styles.loginButton}
-              				containerStyle={{ marginTop: 32, flex: 0 }}
-              				activeOpacity={0.8}
-              				title='Anmelden'
-              				//onPress={isLoginPage ? login : signUp}
-              				titleStyle={styles.loginTextButton}
-              				//loading={isLoading}
-              				//disabled={isLoading}
-            			/>
-            			<Button
-              				buttonStyle={styles.backendButton}
-              				containerStyle={{ marginTop: 32, flex: 0 }}
-              				title={'Konfiguration ...'}
-              				titleStyle={{ color: 'rgba(0, 0, 0, 0.38)' }}
-              				onPress={() => Alert.alert('🤔', 'https://10.101.144.20')}
-            			/>
-          			</View>
-			</ImageBackground>
-		</View>
+		<Stack.Navigator initialRouteName="LoginScreen">
+			<Stack.Screen
+				name="Login"
+				component={LoginScreen}
+				options={{headerShown: false}}
+			/>
+			<Stack.Screen
+				name="LoginConfigScreen"
+				component={LoginConfigScreen}
+				options={{
+					title: 'Konfiguration', //Set Header Title
+					headerStyle: {
+						backgroundColor: '#307ecc', //Set Header color
+					},
+					headerTintColor: '#fff', //Set Header text color
+					headerTitleStyle: {
+						fontWeight: 'bold', //Set Header text style
+					},
+				}}
+			/>
+		</Stack.Navigator>
 	);
-}
-export default StewardMobileApp;
+};
+
+const App = () => {
+	return (
+		<NavigationContainer>
+			<Stack.Navigator initialRouteName="SplashScreen">
+				{/* SplashScreen which will come once for 5 Seconds */}
+				<Stack.Screen
+					name="SplashScreen"
+					component={SplashScreen}
+					// Hiding header for Splash Screen
+					options={{headerShown: false}}
+				/>
+				{/* Auth Navigator: Include Login and Signup */}
+				<Stack.Screen
+					name="Auth"
+					component={Auth}
+					options={{headerShown: false}}
+				/>
+				{/* Navigation Drawer as a landing page */}
+				<Stack.Screen
+					name="DrawerNavigationRoutes"
+					component={DrawerNavigationRoutes}
+					// Hiding header for Navigation Drawer
+					options={{headerShown: false}}
+				/>
+			</Stack.Navigator>
+		</NavigationContainer>
+	);
+};
+
+export default App;

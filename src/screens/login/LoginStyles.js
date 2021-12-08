@@ -3,7 +3,7 @@ import { Dimensions, StyleSheet } from 'react-native';
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 
-const styles = StyleSheet.create({
+const loginStyles = StyleSheet.create({
 	container: {
 		flexGrow: 1,
 		paddingBottom: 20,
@@ -12,6 +12,10 @@ const styles = StyleSheet.create({
 		height: '100%',
 		alignItems: 'center',
 		justifyContent: 'space-around',
+	},
+	activityIndicator: {
+		alignItems: 'center',
+		height: 80,
 	},
 	luckeLogo: {
         //flex: 1,
@@ -91,4 +95,4 @@ const styles = StyleSheet.create({
   	}
 });
 
-export default styles;
+export default loginStyles;
