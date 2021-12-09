@@ -33,7 +33,7 @@ const CustomSidebarMenu = (props) => {
                 <DrawerItemList {...props} />
                 <DrawerItem
                     label={({color}) =>
-                        <Text style={{color: '#d8d8d8'}}>
+                        <Text style={{color: 'white' /*'#d8d8d8'*/}}>
                             Logout
                         </Text>
                     }
@@ -73,6 +73,7 @@ const stylesSidebar = StyleSheet.create({
         width: '100%',
         height: '100%',
         backgroundColor: '#307ecc',
+        //backgroundColor: '#3e951c',
         paddingTop: 40,
         color: 'white',
     },

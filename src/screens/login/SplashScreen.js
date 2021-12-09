@@ -1,6 +1,6 @@
 import { blockStatement } from '@babel/types';
 import React, {useState, useEffect} from 'react';
-import { ActivityIndicator, Image, ImageBackground, StyleSheet, Text, View } from 'react-native';
+import {ActivityIndicator, Alert, Image, ImageBackground, StyleSheet, Text, View} from 'react-native';
 import loginStyles from './LoginStyles';
 
 import storage from '../../db/Storage';
@@ -15,8 +15,8 @@ const SplashScreen = ({navigation}) => {
 		setTimeout(() => {
 			setAnimating(false);
 			const value = storage.contains('user_id');
-			navigation.replace(value == null ? 'Auth' : 'DrawerNavigationRoutes');
-		}, 3000);
+			navigation.replace(value == false ? 'Auth' : 'DrawerNavigationRoutes');
+		}, 2000);
 	}, []);
 
 //export default class SplashScreen extends React.Component {

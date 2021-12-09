@@ -22,6 +22,12 @@ const LoginScreen = ({navigation}) => {
 
 	const passwordInputRef = createRef();
 
+	const login = () => {
+		Alert.alert("Login pressed");
+		storage.set('user_id', 'abc');
+		navigation.replace('DrawerNavigationRoutes');
+	};
+
 	const handleSubmitPress = () => {
 		setErrortext('');
 		if (!userEmail) {
@@ -129,7 +135,7 @@ const LoginScreen = ({navigation}) => {
 							activeOpacity={0.8}
 							title='Anmelden'
 							//onPress={isLoginPage ? login : signUp}
-							onPress={() => navigation.replace('DrawerNavigationRoutes')}
+							onPress={login}
 							titleStyle={loginStyles.loginTextButton}
 							//loading={isLoading}
 							//disabled={isLoading}

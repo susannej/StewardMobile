@@ -1,6 +1,13 @@
 import { blockStatement } from '@babel/types';
 import React from 'react';
-import { Alert, Dimensions, Image, ImageBackground, StyleSheet, Text, View } from 'react-native';
+import { Alert, Dimensions, Image, ImageBackground, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native';
+import {
+	LineChart,
+	BarChart,
+	PieChart,
+	ProgressChart,
+	ContributionGraph
+} from 'react-native-chart-kit';
 import { Button, Input } from 'react-native-elements';
 import appStyles from './AppStyles';
 
@@ -13,51 +20,194 @@ export default class AppDashboardScreen extends React.Component {
 
 	render() {
 		return (
-			<View style={appStyles.container}>
-					<View style={appStyles.titleContainer}>
-						<View>
-							<Text style={appStyles.titleText}>Dashboard</Text>
-						</View>
-					</View>
-					<View style={appStyles.formContainer}>
-						<Input
-							//value={username}
-							autoFocus={true}
-							autoCapitalize="none"
-							autoCorrect={false}
-							keyboardType="email-address"
-							returnKeyType="next"
-							inputStyle={{marginLeft: 10, color: 'grey'}}
-							placeholder={'Dashboard Screen'}
-							containerStyle={{
-								borderBottomColor: 'rgba(0, 0, 0, 0.38)',
+			<SafeAreaView style={appStyles.safeArea}>
+
+				<ScrollView style={appStyles.scrollView}>
+					<View style={{marginTop: 30}}>
+						<Text>
+							Lieferanten Vertrags-Volumen
+						</Text>
+						<LineChart
+							data={{
+								labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+								datasets: [{
+									data: [
+										Math.random() * 100,
+										Math.random() * 100,
+										Math.random() * 100,
+										Math.random() * 100,
+										Math.random() * 100,
+										Math.random() * 100
+									]
+								}]
 							}}
-							//ref={emailInput}
-							//onSubmitEditing={() => passwordInput.current.focus()}
-							//onChangeText={(text) => setEmail(text)}
-							//errorMessage={
-							//isEmailValid ? '' : 'Please enter a valid email address'
-							//}
-						/>
-						<Button
-							buttonStyle={appStyles.loginButton}
-							containerStyle={{marginTop: 32, flex: 0}}
-							activeOpacity={0.8}
-							title='Speichern'
-							//onPress={isLoginPage ? login : signUp}
-							titleStyle={appStyles.loginTextButton}
-							//loading={isLoading}
-							//disabled={isLoading}
-						/>
-						<Button
-							buttonStyle={appStyles.backendButton}
-							containerStyle={{marginTop: 32, flex: 0}}
-							title={'Abbrechen'}
-							titleStyle={{color: 'rgba(0, 0, 0, 0.38)'}}
-							onPress={() => Alert.alert('🤔', 'https://10.101.144.20')}
+							width={Dimensions.get('window').width -40} // from react-native
+							height={220}
+							chartConfig={{
+								backgroundColor: '#e26a00',
+								backgroundGradientFrom: '#183086',
+								backgroundGradientTo: '#0d1a49',
+								color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+								style: {
+									borderRadius: 16
+								}
+							}}
+							bezier
+							style={{
+								marginVertical: 8,
+								borderRadius: 16
+							}}
 						/>
 					</View>
-			</View>
+					<View style={{marginTop: 30}}>
+						<Text>
+							Kunden Vertrags-Volumen
+						</Text>
+						<LineChart
+							data={{
+								labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+								datasets: [{
+									data: [
+										Math.random() * 100,
+										Math.random() * 100,
+										Math.random() * 100,
+										Math.random() * 100,
+										Math.random() * 100,
+										Math.random() * 100
+									]
+								}]
+							}}
+							width={Dimensions.get('window').width -40} // from react-native
+							height={220}
+							chartConfig={{
+								backgroundColor: '#002de2',
+								backgroundGradientFrom: '#183086',
+								backgroundGradientTo: '#0d1a49',
+								color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
+
+								style: {
+									borderRadius: 16
+								}
+							}}
+							bezier
+							style={{
+								marginVertical: 8,
+								borderRadius: 16
+							}}
+						/>
+					</View>
+					<View style={{marginTop: 30}}>
+						<Text>
+							Ausgangsrechnungen
+						</Text>
+						<LineChart
+							data={{
+								labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+								datasets: [{
+									data: [
+										Math.random() * 100,
+										Math.random() * 100,
+										Math.random() * 100,
+										Math.random() * 100,
+										Math.random() * 100,
+										Math.random() * 100
+									]
+								}]
+							}}
+							width={Dimensions.get('window').width -40} // from react-native
+							height={220}
+							chartConfig={{
+								backgroundColor: '#002de2',
+								backgroundGradientFrom: '#183086',
+								backgroundGradientTo: '#0d1a49',
+								color: (opacity = 1) => `rgba(255, 100, 146, ${opacity})`,
+
+								style: {
+									borderRadius: 16
+								}
+							}}
+							bezier
+							style={{
+								marginVertical: 8,
+								borderRadius: 16
+							}}
+						/>
+					</View>
+					<View style={{marginTop: 30}}>
+						<Text>
+							Lieferanten Vertrags-Volumen
+						</Text>
+						<LineChart
+							data={{
+								labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+								datasets: [{
+									data: [
+										Math.random() * 100,
+										Math.random() * 100,
+										Math.random() * 100,
+										Math.random() * 100,
+										Math.random() * 100,
+										Math.random() * 100
+									]
+								}]
+							}}
+							width={Dimensions.get('window').width -40} // from react-native
+							height={220}
+							chartConfig={{
+								backgroundColor: '#e26a00',
+								backgroundGradientFrom: '#fb8c00',
+								backgroundGradientTo: '#ffa726',
+								color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+								style: {
+									borderRadius: 16
+								}
+							}}
+							bezier
+							style={{
+								marginVertical: 8,
+								borderRadius: 16
+							}}
+						/>
+					</View>
+					<View style={{marginTop: 30}}>
+						<Text>
+							Kunden Vertrags-Volumen
+						</Text>
+						<LineChart
+							data={{
+								labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+								datasets: [{
+									data: [
+										Math.random() * 100,
+										Math.random() * 100,
+										Math.random() * 100,
+										Math.random() * 100,
+										Math.random() * 100,
+										Math.random() * 100
+									]
+								}]
+							}}
+							width={Dimensions.get('window').width -40} // from react-native
+							height={220}
+							chartConfig={{
+								backgroundColor: '#002de2',
+								backgroundGradientFrom: 'rgba(0,45,226,0.54)',
+								backgroundGradientTo: 'rgba(0,45,226,0.42)',
+								color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
+
+								style: {
+									borderRadius: 16
+								}
+							}}
+							bezier
+							style={{
+								marginVertical: 8,
+								borderRadius: 16
+							}}
+						/>
+					</View>
+				</ScrollView>
+			</SafeAreaView>
 		);
 	}
 }

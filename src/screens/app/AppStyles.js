@@ -88,7 +88,17 @@ const appStyles = StyleSheet.create({
         height: 64,
         alignItems: 'center',
         justifyContent: 'center',
-  	}
+  	},
+	safeArea: {
+		flex: 1,
+		paddingTop: 50,
+
+	},
+	scrollView: {
+		//backgroundColor: 'pink',
+		marginHorizontal: 20,
+
+	}
 });
 
 export default appStyles;
